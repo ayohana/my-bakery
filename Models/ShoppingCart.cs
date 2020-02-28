@@ -27,11 +27,11 @@ namespace Bakery.Models
       }
       else if (BreadOrder == null)
       {
-        TotalCost = PastryOrder.TotalItemCost;
+        TotalCost = ApplyPastryDiscount();
       }
       else
       {
-        TotalCost = BreadOrder.TotalItemCost + PastryOrder.TotalItemCost;
+        TotalCost = BreadOrder.TotalItemCost + ApplyPastryDiscount();
       }
     }
 
@@ -39,27 +39,32 @@ namespace Bakery.Models
     {
       int freeBread = 0;
       int breadQuantity = BreadOrder.InputOrder;
+      int breadRemainder = breadQuantity % 2;
       if (BreadOrder != null)
       {
-        if (breadQuantity % 2 == 0)
-        {
-          freeBread = breadQuantity / 2;
-          return freeBread;
-        }
-        else if (breadQuantity > 2 && breadQuantity % 2 > 0)
-        {
-          freeBread = (breadQuantity - (breadQuantity % 2)) / 2;
-          return freeBread;
-        }
-        else
-        {
-          return freeBread;
-        }
-
+        freeBread = (breadQuantity - breadRemainder) / 2;
+        return freeBread;
       }
       else
       {
         return freeBread;
+      }
+    }
+
+    public int ApplyPastryDiscount()
+    {
+      int finalPastryTotal = PastryOrder.TotalItemCost;
+      int pastryQuantity = PastryOrder.InputOrder;
+      int pastryRemainder = pastryQuantity % 3;
+      if (PastryOrder != null)
+      {
+        finalPastryTotal = (pastryRemainder) * PastryOrder.CostPerPiece;
+        finalPastryTotal += ((pastryQuantity - pastryRemainder) / 3 * 5);
+        return finalPastryTotal;
+      }
+      else
+      {
+        return finalPastryTotal;
       }
     }
 

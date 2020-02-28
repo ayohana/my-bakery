@@ -6,7 +6,11 @@
 
 ## Description
 
-**This C# console application is for customers at Della's Bakery.** A customer will be able to specify their order of baked goods and the application will display the total cost of their order.
+**This C# console application is for customers at Della's Bakery.** A customer will be able to specify their order of baked goods and the application will display the total cost of their order. Here is a list of prices of their bakery items and special deals:
+  * $5/bread loaf
+  * $2/pastry
+  * Bread special deal: Buy 2 get 1 free
+  * Pastry special deal: Buy 1 for $2 or 3 for $5
 
 ## User Stories
 
@@ -14,6 +18,7 @@
 * As a customer, I want to be notified of my total cost so that I can pay the correct amount.
 * As a baker from Della's Bakery, I want to have a sweet welcome message displayed at the opening of the application so that customers feel welcomed.
 * As a baker from Della's Bakery, I want to have our special deals displayed so that customers would be aware of them.
+* As a developer, I want to have a separate constructor for each item so that I can easily change their base price.
 
 ## Specs
 
@@ -27,7 +32,8 @@
 | **Program Gathers User Input of Pastry and Returns Total Cost of Pastry** | 1 pastry | $2 |
 | **Program Gathers User Input of Bread & Pastry and Returns Total Cost of Shopping Cart** | 2 bread 1 pastry | $12 |
 | **Program Additionally Displays Special Deals with Welcome Message and Menu** | Opening of application | Welcome Message, Menu & Special Deals Displayed |
-| **Program Applies Special Deals** | 2 loaves of bread | $10 + FREE 1 LOAF OF BREAD |
+| **Program Applies Special Bread Deal** | 2 bread | $10 + FREE 1 bread loaf |
+| **Program Applies Special Pastry Deal** | 3 pastry | $5 |
 
 </details>
 

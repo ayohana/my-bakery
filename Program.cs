@@ -101,6 +101,7 @@ namespace Bakery
         switch(inputOrder)
         {
           case "checkout":
+            userShoppingCart.CalculateTotalCost();
             DisplayReceipt();
             stillBrowsing = false;
             break;
@@ -156,8 +157,8 @@ namespace Bakery
 
     public static void DisplayReceipt()
     {
-      userShoppingCart.CalculateTotalCost();
-      Console.WriteLine("======== Customer Receipt ========");
+      Console.WriteLine("========= Customer Receipt =========");
+      Console.WriteLine("                                    ");
       if (userShoppingCart.BreadOrder != null)
       {
         Console.WriteLine($"  {userShoppingCart.BreadOrder.InputOrder} x Bread Loaves        ${userShoppingCart.BreadOrder.TotalItemCost}");
@@ -167,10 +168,15 @@ namespace Bakery
       if (userShoppingCart.PastryOrder != null)
       {
         Console.WriteLine($"  {userShoppingCart.PastryOrder.InputOrder} x Pastry              ${userShoppingCart.PastryOrder.TotalItemCost}");
+        Console.WriteLine($"    Weekly Special:");
+        Console.WriteLine($"    New pastry total = ${userShoppingCart.ApplyPastryDiscount()}");
       }
+      Console.WriteLine("                                    ");
       Console.WriteLine($"  Your Total = ${userShoppingCart.TotalCost}");
-      Console.WriteLine("Thanks for visiting Della's today!");
-      Console.WriteLine("==================================");
+      Console.WriteLine("                                    ");
+      Console.WriteLine("Thanks for purchasing Della's today!");
+      Console.WriteLine("                                    ");
+      Console.WriteLine("====================================");
     }
   }
 }
