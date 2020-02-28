@@ -23,8 +23,9 @@
 | Spec | Input | Output |
 | :-------------     | :------------- | :------------- |
 | **Program Displays Welcome Message and Menu** | Opening of application | Welcome Message & Menu Displayed |
-| **Program Gathers User Input and Returns Total Cost of Bread** | 2 loaves of bread | $10 |
-| **Program Gathers User Input and Returns Total Cost of Pastry** | 1 pastry | $2 |
+| **Program Gathers User Input of Bread and Returns Total Cost of Bread** | 2 bread | $10 |
+| **Program Gathers User Input of Pastry and Returns Total Cost of Pastry** | 1 pastry | $2 |
+| **Program Gathers User Input of Bread & Pastry and Returns Total Cost of Shopping Cart** | 2 bread 1 pastry | $12 |
 | **Program Additionally Displays Special Deals with Welcome Message and Menu** | Opening of application | Welcome Message, Menu & Special Deals Displayed |
 | **Program Applies Special Deals** | 2 loaves of bread | $10 + FREE 1 LOAF OF BREAD |
 

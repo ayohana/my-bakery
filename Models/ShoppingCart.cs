@@ -21,7 +21,19 @@ namespace Bakery.Models
 
     public void CalculateTotalCost()
     {
-      TotalCost = BreadOrder.TotalItemCost + PastryOrder.TotalItemCost;
+      if (PastryOrder == null)
+      {
+        TotalCost = BreadOrder.TotalItemCost;
+      }
+      else if (BreadOrder == null)
+      {
+        TotalCost = PastryOrder.TotalItemCost;
+      }
+      else
+      {
+        TotalCost = BreadOrder.TotalItemCost + PastryOrder.TotalItemCost;
+      }
     }
+    
   }
 }

@@ -87,7 +87,7 @@ namespace Bakery
             stillBrowsing = false;
             break;
           case "exit":
-            Console.WriteLine("You are done browsing our menu.");
+            Console.WriteLine(">>> Heading back to our Main Menu...");
             stillBrowsing = false;
             break;
           default:
