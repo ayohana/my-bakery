@@ -35,11 +35,31 @@ namespace Bakery.Models
       }
     }
 
-    public void ApplySpecialDeals()
+    public int CountFreeBread()
     {
+      int freeBread = 0;
+      int breadQuantity = BreadOrder.InputOrder;
       if (BreadOrder != null)
       {
-        
+        if (breadQuantity % 2 == 0)
+        {
+          freeBread = breadQuantity / 2;
+          return freeBread;
+        }
+        else if (breadQuantity > 2 && breadQuantity % 2 > 0)
+        {
+          freeBread = (breadQuantity - (breadQuantity % 2)) / 2;
+          return freeBread;
+        }
+        else
+        {
+          return freeBread;
+        }
+
+      }
+      else
+      {
+        return freeBread;
       }
     }
 

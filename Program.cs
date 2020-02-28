@@ -161,6 +161,8 @@ namespace Bakery
       if (userShoppingCart.BreadOrder != null)
       {
         Console.WriteLine($"  {userShoppingCart.BreadOrder.InputOrder} x Bread Loaves        ${userShoppingCart.BreadOrder.TotalItemCost}");
+        Console.WriteLine($"    Weekly Special:");
+        Console.WriteLine($"    You also get {userShoppingCart.CountFreeBread()} free bread.");
       }
       if (userShoppingCart.PastryOrder != null)
       {
