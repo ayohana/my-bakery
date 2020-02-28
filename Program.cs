@@ -13,7 +13,6 @@ namespace Bakery
     public static void Main()
     {
       WelcomeMessage();
-
       while(stillShopping)
       {
         ConsoleMenu();
@@ -33,9 +32,10 @@ namespace Bakery
 
     public static void ConsoleMenu()
     {
-      Console.WriteLine(">>> Please type in a NUMBER from our menu options below:");
+      Console.WriteLine(">>> Please type in a [NUMBER] from our Menu Options below:");
       Console.WriteLine("1. Have a look at our baked goods!");
-      Console.WriteLine("2. Exit");
+      Console.WriteLine("2. See our special deals this week!");
+      Console.WriteLine("3. Exit");
       string inputConsoleMenu = Console.ReadLine();
 
       switch(inputConsoleMenu)
@@ -48,6 +48,9 @@ namespace Bakery
           }
           break;
         case "2":
+          DisplaySpecialDeals();
+          break;
+        case "3":
           Console.WriteLine(">>> Goodbye! See you next time!");
           stillShopping = false;
           break;
@@ -55,6 +58,19 @@ namespace Bakery
           Console.WriteLine(">>> Invalid input. Please try again.");
           break;
       }
+    }
+
+    public static void DisplaySpecialDeals()
+    {
+      Console.WriteLine(" __| |_________________________________________| |__");
+      Console.WriteLine("(__   _________________________________________   __)");
+      Console.WriteLine("   | |                                         | |");
+      Console.WriteLine("   | |  .~\"~._Della's Weekly Specials_.~\"~.  | |");
+      Console.WriteLine("   | |        BREAD: Buy 2, get 1 free.        | |");
+      Console.WriteLine("   | |     PASTRY: Buy 1 for $2 or 3 for $5.   | |");
+      Console.WriteLine(" __| |_________________________________________| |__");
+      Console.WriteLine("(__   _________________________________________   __)");
+      Console.WriteLine("   | |                                         | |");
     }
 
     public static void BakeryMenu()
