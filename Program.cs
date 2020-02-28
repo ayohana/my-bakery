@@ -42,9 +42,10 @@ namespace Bakery
       {
         case "1":
           stillBrowsing = true;
+          BakeryMenu();
           while(stillBrowsing)
           {
-            BakeryMenu();
+            BakeryMenuOptions();
           }
           break;
         case "2":
@@ -79,6 +80,10 @@ namespace Bakery
       Console.WriteLine("World's Best Bread $5/loaf");
       Console.WriteLine("World's Best Pastry $2/piece");
       Console.WriteLine("===================================");
+    }
+
+    public static void BakeryMenuOptions()
+    {
       Console.WriteLine(">>> Enter \"EXIT\" to go back to Main Menu.");
       Console.WriteLine(">>> Enter \"CHECKOUT\" when you're ready to see your final cost.");
       Console.WriteLine(">>> Enter your order: [QUANTITY] [ITEM] (example: 2 bread 3 pastry)");
@@ -88,6 +93,7 @@ namespace Bakery
       if (rx.IsMatch(inputOrder))
       {
         userShoppingCart = new ShoppingCart();
+        // shopping cart currently only takes the latest input line
         AreMultipleOrders(inputOrder);
       }
       else
@@ -95,11 +101,7 @@ namespace Bakery
         switch(inputOrder)
         {
           case "checkout":
-            userShoppingCart.CalculateTotalCost();
-            Console.WriteLine("======== Customer Receipt ========");
-            Console.WriteLine($">>> Your Total = ${userShoppingCart.TotalCost}");
-            Console.WriteLine("Thanks for visiting Della's today!");
-            Console.WriteLine("==================================");
+            DisplayReceipt();
             stillBrowsing = false;
             break;
           case "exit":
@@ -150,6 +152,23 @@ namespace Bakery
           Console.WriteLine(">>> Invalid input. Please try again.");
         }
       }
+    }
+
+    public static void DisplayReceipt()
+    {
+      userShoppingCart.CalculateTotalCost();
+      Console.WriteLine("======== Customer Receipt ========");
+      if (userShoppingCart.BreadOrder != null)
+      {
+        Console.WriteLine($"  {userShoppingCart.BreadOrder.InputOrder} x Bread Loaves        ${userShoppingCart.BreadOrder.TotalItemCost}");
+      }
+      if (userShoppingCart.PastryOrder != null)
+      {
+        Console.WriteLine($"  {userShoppingCart.PastryOrder.InputOrder} x Pastry              ${userShoppingCart.PastryOrder.TotalItemCost}");
+      }
+      Console.WriteLine($"  Your Total = ${userShoppingCart.TotalCost}");
+      Console.WriteLine("Thanks for visiting Della's today!");
+      Console.WriteLine("==================================");
     }
   }
 }

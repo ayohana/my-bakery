@@ -34,6 +34,14 @@ namespace Bakery.Models
         TotalCost = BreadOrder.TotalItemCost + PastryOrder.TotalItemCost;
       }
     }
-    
+
+    public void ApplySpecialDeals()
+    {
+      if (BreadOrder != null)
+      {
+        
+      }
+    }
+
   }
 }
