@@ -1,0 +1,11 @@
+C:\Users\Adela\Desktop\my-bakery\bin\Debug\netcoreapp2.2\Bakery.deps.json
+C:\Users\Adela\Desktop\my-bakery\bin\Debug\netcoreapp2.2\Bakery.runtimeconfig.json
+C:\Users\Adela\Desktop\my-bakery\bin\Debug\netcoreapp2.2\Bakery.runtimeconfig.dev.json
+C:\Users\Adela\Desktop\my-bakery\bin\Debug\netcoreapp2.2\Bakery.dll
+C:\Users\Adela\Desktop\my-bakery\bin\Debug\netcoreapp2.2\Bakery.pdb
+C:\Users\Adela\Desktop\my-bakery\obj\Debug\netcoreapp2.2\Bakery.csprojAssemblyReference.cache
+C:\Users\Adela\Desktop\my-bakery\obj\Debug\netcoreapp2.2\Bakery.csproj.CoreCompileInputs.cache
+C:\Users\Adela\Desktop\my-bakery\obj\Debug\netcoreapp2.2\Bakery.AssemblyInfoInputs.cache
+C:\Users\Adela\Desktop\my-bakery\obj\Debug\netcoreapp2.2\Bakery.AssemblyInfo.cs
+C:\Users\Adela\Desktop\my-bakery\obj\Debug\netcoreapp2.2\Bakery.dll
+C:\Users\Adela\Desktop\my-bakery\obj\Debug\netcoreapp2.2\Bakery.pdb
