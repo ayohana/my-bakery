@@ -9,6 +9,7 @@ namespace Bakery
   {
     public static bool stillShopping = true;
     public static bool stillBrowsing = false;
+    public static ShoppingCart userShoppingCart;
     public static void Main()
     {
       WelcomeMessage();
@@ -61,50 +62,69 @@ namespace Bakery
       Console.WriteLine("===== Della's Baked Goods =====");
       Console.WriteLine("World's Best Bread $5/loaf");
       Console.WriteLine("World's Best Pastry $2/piece");
-      Console.WriteLine("When you're ready for checkout, enter \"checkout\" to see your");
-      Console.WriteLine("final cost or enter \"exit\" to cancel/go back to Main Menu.");
+      Console.WriteLine("When you're ready for CHECKOUT, enter \"CHECKOUT\" to see your");
+      Console.WriteLine("final cost or enter \"EXIT\" to cancel/go back to Main Menu.");
       Console.WriteLine("Enter your order: [QUANTITY] [ITEM] (example: 2 bread)");
-
-      Regex rx = new Regex("\\s+");
       string inputOrder = (Console.ReadLine()).ToLower();
+      Regex rx = new Regex("\\s+");
+
       if (rx.IsMatch(inputOrder))
       {
-        Console.WriteLine("input has whitespaces");
+        AreMultipleOrders(inputOrder);
+        string[] inputArr = inputOrder.Split(" ");
+        int inputQuantity = int.Parse(inputArr[0]);
+        string inputItem = inputArr[1];
+        // userShoppingCart = new ShoppingCart(5, 3);
+        switch(inputItem)
+        {
+          case "bread":
+
+            break;
+          case "pastry":
+            break;
+          default:
+            Console.WriteLine(">>> Invalid input. Please try again.");
+            break;
+        }
       }
-      
-      // if (inputOrder.Length < 1)
-      // {
-      //   switch(inputOrder[0])
-      //   {
-      //     case "checkout":
-      //       Console.WriteLine("Here's your total = ...");
-      //       stillBrowsing = false;
-      //       break;
-      //     case "exit":
-      //       Console.WriteLine("You are done browsing our menu.");
-      //       stillBrowsing = false;
-      //       break;
-      //     default:
-      //       Console.WriteLine(">>> Invalid input. Please try again.");
-      //       break;
-      //   }
-      // }
-      // else
-      // {
-      //   inputOrder = inputOrder.Split(" ");
-      //   int inputQuantity = int.Parse(inputOrder[0]);
-      //   string inputItem = inputOrder[1];
-      //   switch(inputItem)
-      //   {
-      //     case "bread":
-      //       break;
-      //     case "pastry":
-      //       break;
-      //     default:
-      //       Console.WriteLine(">>> Invalid input. Please try again.");
-      //       break;
-      //   }
-      // }
+      else
+      {
+        switch(inputOrder)
+        {
+          case "checkout":
+            Console.WriteLine("Here's your total = ...");
+            stillBrowsing = false;
+            break;
+          case "exit":
+            Console.WriteLine("You are done browsing our menu.");
+            stillBrowsing = false;
+            break;
+          default:
+            Console.WriteLine(">>> Invalid input. Please try again.");
+            break;
+        }
+      }
+    }
+
+    public static void AreMultipleOrders(string inputOrder)
+    {
+      Regex NumberSpaceWord = new Regex("[0-9]+\\s\\w+");
+      Match eachMatch = NumberSpaceWord.Match(inputOrder);
+      if (eachMatch.Success)
+      {
+        MatchCollection matches = NumberSpaceWord.Matches(inputOrder);
+
+        // Report the number of matches found.
+        Console.WriteLine("{0} matches found in:\n   {1}", 
+                          matches.Count, 
+                          inputOrder);
+
+        // Report on each match.
+        foreach (Match match in matches)
+        {
+            Console.WriteLine("Found '{0}' at position {1}", match.Value, match.Index);
+        }
+      }
       
     }
   }
