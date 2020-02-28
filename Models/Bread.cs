@@ -7,13 +7,13 @@ namespace Bakery.Models
   {
     public int InputOrder { get; set; }
     public int CostPerLoaf { get; set; }
-    public int TotalBreadCost { get; set; }
+    public int TotalItemCost { get; set; }
 
     public Bread(int inputOrder)
     {
       InputOrder = inputOrder;
       CostPerLoaf = 5;
-      TotalBreadCost = InputOrder * CostPerLoaf;
+      TotalItemCost = InputOrder * CostPerLoaf;
     }
   }
 }

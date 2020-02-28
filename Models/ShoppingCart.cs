@@ -7,11 +7,21 @@ namespace Bakery.Models
   {
     public Bread BreadOrder { get; set; }
     public Pastry PastryOrder { get; set; }
+    public int TotalCost { get; set; }
 
-    public ShoppingCart(int breadInputOrder, int pastryInputOrder)
+    public void AddBread(int inputOrder)
     {
-      BreadOrder = new Bread(breadInputOrder);
-      PastryOrder = new Pastry(pastryInputOrder);
+      BreadOrder = new Bread(inputOrder);
+    }
+
+    public void AddPastry(int inputOrder)
+    {
+      PastryOrder = new Pastry(inputOrder);
+    }
+
+    public void CalculateTotalCost()
+    {
+      TotalCost = BreadOrder.TotalItemCost + PastryOrder.TotalItemCost;
     }
   }
 }

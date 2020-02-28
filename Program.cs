@@ -59,40 +59,31 @@ namespace Bakery
 
     public static void BakeryMenu()
     {
-      Console.WriteLine("===== Della's Baked Goods =====");
+      Console.WriteLine("======= Della's Baked Goods =======");
       Console.WriteLine("World's Best Bread $5/loaf");
       Console.WriteLine("World's Best Pastry $2/piece");
-      Console.WriteLine("When you're ready for CHECKOUT, enter \"CHECKOUT\" to see your");
-      Console.WriteLine("final cost or enter \"EXIT\" to cancel/go back to Main Menu.");
-      Console.WriteLine("Enter your order: [QUANTITY] [ITEM] (example: 2 bread)");
+      Console.WriteLine("===================================");
+      Console.WriteLine(">>> Enter \"EXIT\" to go back to Main Menu.");
+      Console.WriteLine(">>> Enter \"CHECKOUT\" when you're ready to see your final cost.");
+      Console.WriteLine(">>> Enter your order: [QUANTITY] [ITEM] (example: 2 bread 3 pastry)");
       string inputOrder = (Console.ReadLine()).ToLower();
       Regex rx = new Regex("\\s+");
 
       if (rx.IsMatch(inputOrder))
       {
+        userShoppingCart = new ShoppingCart();
         AreMultipleOrders(inputOrder);
-        string[] inputArr = inputOrder.Split(" ");
-        int inputQuantity = int.Parse(inputArr[0]);
-        string inputItem = inputArr[1];
-        // userShoppingCart = new ShoppingCart(5, 3);
-        switch(inputItem)
-        {
-          case "bread":
-
-            break;
-          case "pastry":
-            break;
-          default:
-            Console.WriteLine(">>> Invalid input. Please try again.");
-            break;
-        }
       }
       else
       {
         switch(inputOrder)
         {
           case "checkout":
-            Console.WriteLine("Here's your total = ...");
+            userShoppingCart.CalculateTotalCost();
+            Console.WriteLine("======== Customer Receipt ========");
+            Console.WriteLine($">>> Your Total = ${userShoppingCart.TotalCost}");
+            Console.WriteLine("Thanks for visiting Della's today!");
+            Console.WriteLine("==================================");
             stillBrowsing = false;
             break;
           case "exit":
@@ -113,19 +104,36 @@ namespace Bakery
       if (eachMatch.Success)
       {
         MatchCollection matches = NumberSpaceWord.Matches(inputOrder);
-
-        // Report the number of matches found.
-        Console.WriteLine("{0} matches found in:\n   {1}", 
-                          matches.Count, 
-                          inputOrder);
-
-        // Report on each match.
-        foreach (Match match in matches)
+        if (matches.Count > 2)
         {
-            Console.WriteLine("Found '{0}' at position {1}", match.Value, match.Index);
+          Console.WriteLine(">>> Too many items specified. Please try again.");
+        }
+        else if (matches.Count > 0)
+        {
+          foreach (Match match in matches)
+          {
+            string[] eachOrderArr = (match.Value).Split(" ");
+            int inputQuantity = int.Parse(eachOrderArr[0]);
+            string inputItem = eachOrderArr[1];
+            switch(inputItem)
+            {
+              case "bread":
+                userShoppingCart.AddBread(inputQuantity);
+                break;
+              case "pastry":
+                userShoppingCart.AddPastry(inputQuantity);
+                break;
+              default:
+                Console.WriteLine(">>> Unknown item(s) specified. Please try again.");
+                break;
+            }
+          }
+        }
+        else
+        {
+          Console.WriteLine(">>> Invalid input. Please try again.");
         }
       }
-      
     }
   }
 }
