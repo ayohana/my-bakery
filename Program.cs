@@ -66,7 +66,7 @@ namespace Bakery
       Console.WriteLine(" __| |_________________________________________| |__");
       Console.WriteLine("(__   _________________________________________   __)");
       Console.WriteLine("   | |                                         | |");
-      Console.WriteLine("   | |  .~\"~._Della's Weekly Specials_.~\"~.  | |");
+      Console.WriteLine("   | |   .~\"~._Della's Weekly Specials_.~\"~.   | |");
       Console.WriteLine("   | |        BREAD: Buy 2, get 1 free.        | |");
       Console.WriteLine("   | |     PASTRY: Buy 1 for $2 or 3 for $5.   | |");
       Console.WriteLine(" __| |_________________________________________| |__");

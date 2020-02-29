@@ -21,50 +21,47 @@ namespace Bakery.Models
 
     public void CalculateTotalCost()
     {
-      if (PastryOrder == null)
+      TotalCost = ApplyBreadDiscount() + ApplyPastryDiscount();
+    }
+
+    public int ApplyBreadDiscount()
+    {
+      if (BreadOrder != null)
       {
-        TotalCost = BreadOrder.TotalItemCost;
-      }
-      else if (BreadOrder == null)
-      {
-        TotalCost = ApplyPastryDiscount();
+        if (CountFreeBread() > 0)
+        {
+          BreadOrder.InputOrder -= (BreadOrder.InputOrder % 2);
+          BreadOrder.TotalItemCost = BreadOrder.InputOrder * BreadOrder.CostPerLoaf;
+        }
+        return BreadOrder.TotalItemCost;
       }
       else
       {
-        TotalCost = BreadOrder.TotalItemCost + ApplyPastryDiscount();
+        return 0;
       }
     }
 
     public int CountFreeBread()
     {
-      int freeBread = 0;
       int breadQuantity = BreadOrder.InputOrder;
       int breadRemainder = breadQuantity % 2;
-      if (BreadOrder != null)
-      {
-        freeBread = (breadQuantity - breadRemainder) / 2;
-        return freeBread;
-      }
-      else
-      {
-        return freeBread;
-      }
+      return (breadQuantity - breadRemainder) / 2;
     }
 
     public int ApplyPastryDiscount()
     {
-      int finalPastryTotal = PastryOrder.TotalItemCost;
-      int pastryQuantity = PastryOrder.InputOrder;
-      int pastryRemainder = pastryQuantity % 3;
       if (PastryOrder != null)
       {
+        int finalPastryTotal = PastryOrder.TotalItemCost;
+        int pastryQuantity = PastryOrder.InputOrder;
+        int pastryRemainder = pastryQuantity % 3;
         finalPastryTotal = (pastryRemainder) * PastryOrder.CostPerPiece;
         finalPastryTotal += ((pastryQuantity - pastryRemainder) / 3 * 5);
         return finalPastryTotal;
       }
       else
       {
-        return finalPastryTotal;
+        return 0;
       }
     }
 
