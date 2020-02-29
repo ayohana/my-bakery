@@ -6,11 +6,24 @@
 
 ## Description
 
+![A Screenshot of Application's Welcome Screen](./welcomeScreen.JPG/)
+
 **This C# console application is for customers at Della's Bakery.** A customer will be able to specify their order of baked goods and the application will display the total cost of their order. Here is a list of prices of their bakery items and special deals:
   * $5/bread loaf
   * $2/pastry
   * Bread special deal: Buy 2 get 1 free
   * Pastry special deal: Buy 1 for $2 or 3 for $5
+
+## Screenshots
+
+#### How to place an order:
+![A Screenshot of the bakery's order placement](./orderExample.JPG/)
+
+#### Display of customer receipt upon checkout:
+![A Screenshot of a receipt](./receiptExample.JPG/)
+
+#### Display of the bakery's special deals:
+![A Screenshot of the bakery's special deals](./specialDeals.JPG/)
 
 ## User Stories
 
@@ -50,6 +63,11 @@ _Enjoy!_
 ## Known Bugs
 
 No known bugs at this time.
+
+## Improvement Opportunities
+
+* `ShoppingCart` instance currently only gathers the last user input.
+* Display content of `ShoppingCart` prior to checkout.
 
 ## Support and contact details
 

@@ -10,6 +10,7 @@ namespace Bakery
     public static bool stillShopping = true;
     public static bool stillBrowsing = false;
     public static ShoppingCart userShoppingCart;
+
     public static void Main()
     {
       WelcomeMessage();
@@ -21,11 +22,12 @@ namespace Bakery
 
     public static void WelcomeMessage()
     {
-      Console.WriteLine("  ___      _ _      _      ___       _                ");
-      Console.WriteLine(" |   \\ ___| | |__ _( )___ | _ ) __ _| |_____ _ _ _  _ ");
-      Console.WriteLine(" | |) / -_) | / _` |/(_-< | _ \\/ _` | / / -_) '_| || |");
-      Console.WriteLine(" |___/\\___|_|_\\__,_| /__/ |___/\\__,_|_\\_\\___|_|  \\_, |");
-      Console.WriteLine("                                                 |__/ ");
+      Console.WriteLine("                                                      ");
+      Console.WriteLine("   ___      _ _      _      ___       _                ");
+      Console.WriteLine("  |   \\ ___| | |__ _( )___ | _ ) __ _| |_____ _ _ _  _ ");
+      Console.WriteLine("  | |) / -_) | / _` |/(_-< | _ \\/ _` | / / -_) '_| || |");
+      Console.WriteLine("  |___/\\___|_|_\\__,_| /__/ |___/\\__,_|_\\_\\___|_|  \\_, |");
+      Console.WriteLine("                                                  |__/ ");
       Console.WriteLine("Welcome to Della's Bakery! Our bread and pastry contains");
       Console.WriteLine("the finest local sugar, butter and flour ingredients. Enjoy!");
     }
@@ -37,7 +39,6 @@ namespace Bakery
       Console.WriteLine("2. See our special deals this week!");
       Console.WriteLine("3. Exit");
       string inputConsoleMenu = Console.ReadLine();
-
       switch(inputConsoleMenu)
       {
         case "1":
@@ -77,8 +78,8 @@ namespace Bakery
     public static void BakeryMenu()
     {
       Console.WriteLine("======= Della's Baked Goods =======");
-      Console.WriteLine("World's Best Bread $5/loaf");
-      Console.WriteLine("World's Best Pastry $2/piece");
+      Console.WriteLine("    World's Best Bread $5/loaf");
+      Console.WriteLine("   World's Best Pastry $2/piece");
       Console.WriteLine("===================================");
     }
 
@@ -89,11 +90,9 @@ namespace Bakery
       Console.WriteLine(">>> Enter your order: [QUANTITY] [ITEM] (example: 2 bread 3 pastry)");
       string inputOrder = (Console.ReadLine()).ToLower();
       Regex rx = new Regex("\\s+");
-
       if (rx.IsMatch(inputOrder))
       {
         userShoppingCart = new ShoppingCart();
-        // shopping cart currently only takes the latest input line
         AreMultipleOrders(inputOrder);
       }
       else
